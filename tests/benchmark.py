@@ -1,5 +1,10 @@
 import random
 import time
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))
 
 from karatsuba.karatsuba import karatsuba
 from karatsuba.naive import naive_multiply
@@ -14,7 +19,7 @@ def generate_number(digits):
     return int(first + rest)
 
 
-sizes = [10, 50, 100, 500]
+sizes = [100, 500, 1000, 2000]
 
 print(
     f"{'Digits':<10}"
