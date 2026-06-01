@@ -1,3 +1,5 @@
+import math
+
 def karatsuba(x: int, y: int) -> int:
     """
     Алгоритм умножения Карацубы.
@@ -23,7 +25,7 @@ def _karatsuba_recursive(x: int, y: int) -> int:
     if x < 10 or y < 10:
         return x * y
 
-    n = max(len(str(x)), len(str(y)))
+    n = int(math.log10(max(x, y))) + 1
     m = n // 2
 
     a = x // (10**m)
@@ -33,16 +35,13 @@ def _karatsuba_recursive(x: int, y: int) -> int:
     d = y % (10**m)
 
     z0 = _karatsuba_recursive(b, d)
-
     z2 = _karatsuba_recursive(a, c)
+    z1 = _karatsuba_recursive(a + b, c + d) - z2 - z0
 
-    z1 = (_karatsuba_recursive(a + b, c + d) - z2 - z0)
-
-    return (z2 * (10 ** (2 * m)) + z1 * (10**m) + z0)
+    return z2 * (10 ** (2 * m)) + z1 * (10**m) + z0
 
 
 class KaratsubaCounter:
-
     def __init__(self):
         self.calls = 0
 
@@ -51,13 +50,12 @@ class KaratsubaCounter:
         return self._multiply(x, y)
 
     def _multiply(self, x: int, y: int) -> int:
-
         self.calls += 1
 
         if x < 10 or y < 10:
             return x * y
 
-        n = max(len(str(x)), len(str(y)))
+        n = int(math.log10(max(x, y))) + 1
         m = n // 2
 
         a = x // (10**m)
@@ -68,10 +66,9 @@ class KaratsubaCounter:
 
         z0 = self._multiply(b, d)
         z2 = self._multiply(a, c)
+        z1 = self._multiply(a + b, c + d) - z0 - z2
 
-        z1 = (self._multiply(a + b, c + d) - z0 - z2)
-
-        return (z2 * (10 ** (2 * m)) + z1 * (10**m) + z0)
+        return z2 * (10 ** (2 * m)) + z1 * (10**m) + z0
 
 
 if __name__ == "__main__":
