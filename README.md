@@ -1,23 +1,22 @@
 # Karatsuba Multiplication Algorithm
 
-Mini-project for the Algorithms and Data Structures course.
+Мини-проект по курсу «Алгоритмы и структуры данных».
 
-## Project Overview
+## Обзор проекта
 
-This project implements the Karatsuba multiplication algorithm for large integers and compares its behavior with a naive multiplication approach.
+В данном проекте реализован алгоритм умножения Карацубы и выполнено его сравнение с классическим методом умножения.
 
-Karatsuba's algorithm is a divide-and-conquer method that reduces the number of recursive multiplications from four to three, improving the asymptotic complexity from:
+Алгоритм Карацубы основан на принципе «разделяй и властвуй». Вместо выполнения четырёх рекурсивных умножений он выполняет только три, что позволяет уменьшить асимптотическую сложность с:
 
-* Naive multiplication: O(n²)
-* Karatsuba multiplication: O(n^1.585)
+**Наивное умножение:** O(n²)
 
-where:
+до
 
-log₂(3) ≈ 1.585
+**Алгоритм Карацубы:** O(n^1.585)
 
 ---
 
-## Project Structure
+## Структура проекта
 
 ```text
 mini-project-The-Karatsuba-Algorithm/
@@ -30,70 +29,69 @@ mini-project-The-Karatsuba-Algorithm/
 ├── tests/
 │   ├── test_karatsuba.py
 │   ├── benchmark.py
-│   └── recursion_demo.py
+│   ├── recursion_demo.py
+│   └── complexity_demo.py
 │
 └── README.md
 ```
 
 ---
 
-## Implemented Components
+## Реализация
 
-### Karatsuba Algorithm
+Проект состоит из двух основных компонентов.
 
-File:
+### Алгоритм Карацубы
+
+Файл:
 
 ```text
 karatsuba/karatsuba.py
 ```
 
-Features:
+Особенности реализации:
 
-* Recursive divide-and-conquer multiplication
-* Three recursive multiplications instead of four
-* Support for arbitrarily large integers
-* Recursive call counter for demonstration purposes
+* рекурсивное умножение по методу «разделяй и властвуй»;
+* поддержка отрицательных чисел;
+* подсчёт количества рекурсивных вызовов;
+* возможность проверки результатов сравнением со встроенным умножением Python.
 
----
+### Наивное умножение
 
-### Naive Multiplication
-
-File:
+Файл:
 
 ```text
 karatsuba/naive.py
 ```
 
-Features:
-
-* Classical schoolbook multiplication approach
-* Used as a baseline for comparison
+Содержит реализацию классического школьного алгоритма умножения, используемого для сравнения с алгоритмом Карацубы.
 
 ---
 
-## Testing
+## Тестирование
 
-Unit tests are located in:
+Модульные тесты расположены в файле:
 
 ```text
 tests/test_karatsuba.py
 ```
 
-Test cases include:
+Проверяются следующие случаи:
 
-* Multiplication by zero
-* Multiplication by one
-* Small predefined examples
-* Large predefined examples
-* Randomized testing against Python's built-in multiplication
+* умножение на ноль;
+* умножение на единицу;
+* небольшие заранее известные примеры;
+* большие заранее известные примеры;
+* отрицательные числа;
+* случайно сгенерированные тестовые данные.
 
-Run tests:
+Запуск тестов:
 
 ```bash
 python -m unittest tests.test_karatsuba
 ```
 
-Expected output:
+Результат выполнения:
 
 ```text
 ......
@@ -103,62 +101,147 @@ Ran 6 tests
 OK
 ```
 
+Все тесты были успешно пройдены, что подтверждает корректность реализации алгоритма.
+
 ---
 
-## Performance Benchmark
+## Измерение производительности
 
-Benchmark script:
+Для сравнения времени работы алгоритмов используется файл:
 
 ```text
 tests/benchmark.py
 ```
 
-Run:
+Запуск:
 
 ```bash
 python -m tests.benchmark
 ```
 
-Example output:
+Пример результата:
 
 ```text
 Digits    Naive (s)      Karatsuba (s)
 
-100       0.000141       0.001312
-500       0.001959       0.014086
-1000      0.012037       0.042549
-2000      0.073312       0.243758
+100       0.000096       0.001187       
+500       0.001975       0.014388       
+1000      0.011626       0.043318       
+2000      0.070689       0.211880       
+5000      0.791940       0.684875       
+10000     4.507000       1.864495
 ```
+
+Для исследованных размеров входных данных наивная реализация работает быстрее реализации Карацубы. Это связано с тем, что встроенная арифметика Python сильно оптимизирована и реализована на языке C, а также с дополнительными накладными расходами на рекурсивные вызовы.
+
+Тем не менее алгоритм Карацубы демонстрирует ожидаемую структуру метода «разделяй и властвуй» и обладает лучшей теоретической асимптотикой.
 
 ---
 
-## Recursive Call Demonstration
+## Демонстрация рекурсивной работы алгоритма
 
-Demonstration script:
+Для демонстрации рекурсивной природы алгоритма используется файл:
 
 ```text
 tests/recursion_demo.py
 ```
 
-Run:
+Запуск:
 
 ```bash
 python -m tests.recursion_demo
 ```
 
-Example output:
+Результат:
 
 ```text
 Result: 1082152022374638
 Recursive calls: 49
 ```
 
-This demonstrates the recursive nature of the Karatsuba algorithm and the reduction in multiplication operations compared to the classical divide-and-conquer approach.
+Полученный результат подтверждает корректность вычислений и показывает, что задача разбивается на множество рекурсивных подзадач.
 
 ---
 
-## Conclusion
+## Анализ количества рекурсивных вызовов
 
-The project successfully implements the Karatsuba multiplication algorithm and verifies its correctness through automated testing.
+Для исследования роста числа рекурсивных вызовов используется файл:
 
-Although Python's built-in multiplication remains faster due to low-level optimizations, the implementation demonstrates the theoretical improvement of Karatsuba's method and its divide-and-conquer strategy.
+```text
+tests/complexity_demo.py
+```
+
+Запуск:
+
+```bash
+python -m tests.complexity_demo
+```
+
+Результат:
+
+```text
+digits=4, calls=16
+digits=8, calls=49
+digits=16, calls=175
+```
+
+С увеличением размера входных данных количество рекурсивных вызовов возрастает, что наглядно демонстрирует рекурсивную природу алгоритма Карацубы и его стратегию разделения задачи на подзадачи меньшего размера.
+
+---
+
+## Идея алгоритма
+
+Пусть даны два числа:
+
+```text
+x = a · 10^m + b
+y = c · 10^m + d
+```
+
+В классическом рекурсивном подходе необходимо вычислить четыре произведения:
+
+```text
+ac, ad, bc, bd
+```
+
+Алгоритм Карацубы сокращает их количество до трёх:
+
+```text
+z0 = bd
+z2 = ac
+z1 = (a + b)(c + d) − z2 − z0
+```
+
+После этого результат восстанавливается по формуле:
+
+```text
+x · y = z2 · 10^(2m) + z1 · 10^m + z0
+```
+
+Такой подход приводит к рекуррентному соотношению:
+
+```text
+T(n) = 3T(n/2) + O(n)
+```
+
+что даёт асимптотическую сложность:
+
+```text
+O(n^1.585)
+```
+
+---
+
+## Заключение
+
+В ходе выполнения проекта был реализован алгоритм умножения Карацубы и проведена его экспериментальная проверка.
+
+Полученные результаты показывают:
+
+* корректную работу алгоритма на различных наборах данных;
+* успешное прохождение модульных тестов;
+* использование рекурсивного разбиения задачи;
+* уменьшение количества рекурсивных умножений с четырёх до трёх;
+* соответствие поведения алгоритма его теоретической сложности.
+
+Несмотря на то что встроенные средства Python показывают более высокую производительность на исследованных размерах входных данных, реализованный алгоритм успешно демонстрирует основные идеи метода Карацубы и преимущества подхода «разделяй и властвуй».
