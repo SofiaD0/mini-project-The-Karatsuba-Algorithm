@@ -1,8 +1,8 @@
 import random
 import time
 
-from src.karatsuba import karatsuba
-from src.naive import naive_multiply
+from karatsuba.karatsuba import karatsuba
+from karatsuba.naive import naive_multiply
 
 
 def generate_number(digits):

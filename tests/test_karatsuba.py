@@ -1,6 +1,6 @@
 import unittest
 
-from src.karatsuba import karatsuba
+from karatsuba.karatsuba import karatsuba
 
 
 class TestKaratsuba(unittest.TestCase):
