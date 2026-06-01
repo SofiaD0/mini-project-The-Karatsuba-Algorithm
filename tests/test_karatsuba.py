@@ -33,6 +33,10 @@ class TestKaratsuba(unittest.TestCase):
             b = random.randint(-10**8, 10**8)
 
             self.assertEqual(karatsuba(a, b), a * b)
+            
+    def test_different_lengths(self):
+        self.assertEqual(karatsuba(123, 456789), 123 * 456789)
+        self.assertEqual(karatsuba(987654321, 12), 987654321 * 12)
 
 
 if __name__ == "__main__":
