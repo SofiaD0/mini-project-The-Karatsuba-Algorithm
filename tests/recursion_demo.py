@@ -7,5 +7,5 @@ b = 87654321
 
 result = counter.multiply(a, b)
 
-print("Result:", result)
-print("Recursive calls:", counter.calls)
+print("Результат:", result)
+print("Рекурсивные вызовы:", counter.calls)

@@ -1,6 +1,6 @@
 def karatsuba(x: int, y: int) -> int:
     """
-    Karatsuba multiplication algorithm.
+    Алгоритм умножения Карацубы.
     """
 
     sign = 1
@@ -95,5 +95,5 @@ if __name__ == "__main__":
     a = 12345678
     b = 87654321
 
-    print("Karatsuba:", karatsuba(a, b))
+    print("Карацуба:", karatsuba(a, b))
     print("Python:", a * b)

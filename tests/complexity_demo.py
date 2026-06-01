@@ -1,5 +1,3 @@
-# tests/complexity_demo.py
-
 from karatsuba.karatsuba import KaratsubaCounter
 
 sizes = [
