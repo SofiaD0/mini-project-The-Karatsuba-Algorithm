@@ -18,7 +18,7 @@ def generate_number(digits):
     return int(first + rest)
 
 
-sizes = [100, 500, 1000, 2000, 5000, 10000]
+sizes = [100, 500, 1000, 2000, 5000, 10000, 20000, 50000]
 
 print(f"{'Digits':<10}{'Naive (s)':<15}{'Karatsuba (s)':<15}")
 
