@@ -1,7 +1,6 @@
 def naive_multiply(a: int, b: int) -> int:
-
     sign = 1
-
+    
     if a < 0:
         sign *= -1
         a = abs(a)
@@ -11,15 +10,11 @@ def naive_multiply(a: int, b: int) -> int:
         b = abs(b)
 
     result = 0
-
     shift = 0
 
     while b > 0:
-
         digit = b % 10
-
         result += (a * digit * (10**shift))
-
         shift += 1
         b //= 10
 
