@@ -18,9 +18,7 @@ def naive_multiply(a: int, b: int) -> int:
 
         digit = b % 10
 
-        result += (
-            a * digit * (10**shift)
-        )
+        result += (a * digit * (10**shift))
 
         shift += 1
         b //= 10

@@ -36,17 +36,9 @@ def _karatsuba_recursive(x: int, y: int) -> int:
 
     z2 = _karatsuba_recursive(a, c)
 
-    z1 = (
-        _karatsuba_recursive(a + b, c + d)
-        - z2
-        - z0
-    )
+    z1 = (_karatsuba_recursive(a + b, c + d) - z2 - z0)
 
-    return (
-        z2 * (10 ** (2 * m))
-        + z1 * (10**m)
-        + z0
-    )
+    return (z2 * (10 ** (2 * m)) + z1 * (10**m) + z0)
 
 
 class KaratsubaCounter:
@@ -77,17 +69,9 @@ class KaratsubaCounter:
         z0 = self._multiply(b, d)
         z2 = self._multiply(a, c)
 
-        z1 = (
-            self._multiply(a + b, c + d)
-            - z0
-            - z2
-        )
+        z1 = (self._multiply(a + b, c + d) - z0 - z2)
 
-        return (
-            z2 * (10 ** (2 * m))
-            + z1 * (10**m)
-            + z0
-        )
+        return (z2 * (10 ** (2 * m)) + z1 * (10**m) + z0)
 
 
 if __name__ == "__main__":
