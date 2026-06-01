@@ -8,4 +8,4 @@ for a, b in sizes:
 
     counter.multiply(a, b)
 
-    print(f"цифры = {len(str(a))}, количества рекурсивных вызовов = {counter.calls}")
+    print(f"количество цифр = {len(str(a))}, количество рекурсивных вызовов = {counter.calls}")
