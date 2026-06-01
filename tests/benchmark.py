@@ -19,7 +19,7 @@ def generate_number(digits):
     return int(first + rest)
 
 
-sizes = [100, 500, 1000, 2000]
+sizes = [100, 500, 1000, 2000, 5000, 10000]
 
 print(
     f"{'Digits':<10}"
